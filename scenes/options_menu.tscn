@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dkqpigip644xa"]
+
+[node name="optionsMenu" type="Node2D" unique_id=212199158]
+
+[node name="Control" type="Control" parent="." unique_id=2099565058]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

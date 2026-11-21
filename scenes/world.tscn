@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bnyg8mnxfajv6"]
+
+[ext_resource type="Texture2D" uid="uid://bkvyjjigvdjmx" path="res://assets/textures/background1.png" id="1_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://dulqh1yimywfm" path="res://scenes/box.tscn" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://08vsefbp3lpi" path="res://scenes/player.tscn" id="2_rwgxs"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ol23p"]
+
+[node name="World" type="Node2D" unique_id=2075787131]
+
+[node name="y" type="MeshInstance2D" parent="." unique_id=1063150116]
+modulate = Color(0.4862745, 0.92156863, 0.43529412, 1)
+position = Vector2(641, 363)
+scale = Vector2(3901.5, 2270.5)
+mesh = SubResource("QuadMesh_ol23p")
+texture = ExtResource("1_4wyf3")
+metadata/_edit_lock_ = true
+
+[node name="box" parent="." unique_id=37761909 instance=ExtResource("1_nnsk1")]
+position = Vector2(323, 185)
+
+[node name="player" parent="box" unique_id=1985773387 instance=ExtResource("2_rwgxs")]
+position = Vector2(318, 178)

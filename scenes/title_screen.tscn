@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://b8ib2qflkmlhn"]
+
+[sub_resource type="GDScript" id="GDScript_1a2ex"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+
+func _on_start_pressed() -> void:
+	 # Replace with function body.=
+	get_tree().change_scene_to_file(\"res://scenes/world.tscn\")
+
+func _on_options_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/options_menu.tscn\") # Replace with function body.
+
+func _on_exit_pressed() -> void:
+	get_tree().quit() # Replace with function body.
+"
+
+[node name="titleScreen" type="Node2D" unique_id=629608187]
+script = SubResource("GDScript_1a2ex")
+
+[node name="buttonManager" type="Control" parent="." unique_id=941189786]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="start" type="Button" parent="buttonManager" unique_id=1261267937]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 277.0
+offset_right = 761.0
+offset_bottom = 396.0
+text = "START"
+
+[node name="options" type="Button" parent="buttonManager" unique_id=122528098]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 423.0
+offset_right = 745.0
+offset_bottom = 543.0
+text = "OPTIONS"
+
+[node name="exit" type="Button" parent="buttonManager" unique_id=1889329969]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 568.0
+offset_right = 715.0
+offset_bottom = 685.0
+text = "EXIT"
+
+[connection signal="pressed" from="buttonManager/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="buttonManager/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="buttonManager/exit" to="." method="_on_exit_pressed"]
