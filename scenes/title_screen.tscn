@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://b8ib2qflkmlhn"]
 
+[ext_resource type="Texture2D" uid="uid://dsasbf1eir032" path="res://assets/textures/Title.png" id="1_fgkus"]
+
 [sub_resource type="GDScript" id="GDScript_1a2ex"]
 script/source = "extends Node2D
 
@@ -26,6 +28,12 @@ func _on_exit_pressed() -> void:
 [node name="titleScreen" type="Node2D" unique_id=629608187]
 script = SubResource("GDScript_1a2ex")
 
+[node name="background" type="Sprite2D" parent="." unique_id=1913434858]
+texture_filter = 1
+position = Vector2(657.99994, 439)
+scale = Vector2(22.000002, 19.656252)
+texture = ExtResource("1_fgkus")
+
 [node name="buttonManager" type="Control" parent="." unique_id=941189786]
 layout_mode = 3
 anchors_preset = 0
@@ -34,28 +42,29 @@ offset_bottom = 40.0
 
 [node name="start" type="Button" parent="buttonManager" unique_id=1261267937]
 layout_mode = 0
-offset_left = 395.0
-offset_top = 277.0
-offset_right = 761.0
-offset_bottom = 396.0
+offset_left = 86.0
+offset_top = 279.0
+offset_right = 1186.0
+offset_bottom = 439.0
 text = "START"
+icon_alignment = 1
 
 [node name="options" type="Button" parent="buttonManager" unique_id=122528098]
 layout_mode = 0
-offset_left = 420.0
-offset_top = 423.0
-offset_right = 745.0
+offset_left = 89.0
+offset_top = 460.0
+offset_right = 1165.0
 offset_bottom = 543.0
 text = "OPTIONS"
 
-[node name="exit" type="Button" parent="buttonManager" unique_id=1889329969]
+[node name="exit" type="Button" parent="buttonManager/options" unique_id=1889329969]
 layout_mode = 0
-offset_left = 456.0
-offset_top = 568.0
-offset_right = 715.0
-offset_bottom = 685.0
+offset_left = -1.0
+offset_top = 98.0
+offset_right = 1076.0
+offset_bottom = 176.0
 text = "EXIT"
 
 [connection signal="pressed" from="buttonManager/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="buttonManager/options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="buttonManager/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="buttonManager/options/exit" to="." method="_on_exit_pressed"]
