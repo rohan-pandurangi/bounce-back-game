@@ -53,7 +53,7 @@ offset_left = 89.0
 offset_top = 460.0
 offset_right = 1165.0
 offset_bottom = 543.0
-text = "OPTIONS"
+text = "OPTIONS (DOES NOTHING LOL)"
 
 [node name="exit" type="Button" parent="buttonManager/options" unique_id=1889329969]
 layout_mode = 0

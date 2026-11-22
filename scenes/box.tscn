@@ -10,7 +10,7 @@ collision_mask = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1095672572]
 texture_filter = 1
-position = Vector2(158.00002, 309)
+position = Vector2(158.99998, 308)
 scale = Vector2(16.725342, 17.611788)
 texture = ExtResource("1_3inec")
 

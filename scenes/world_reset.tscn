@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world_reset.gd" id="1"]
+
+[node name="worldReset" type="Node2D"]
+script = ExtResource("1")

@@ -3,8 +3,9 @@ extends CharacterBody2D
 var pos: Vector2
 var rota: float
 var dir: float
+var dmg: int = 1
 
-var speed: float = 2000.0
+var speed: float = 750.0
 var bounce_count: int = 0
 
 
@@ -26,11 +27,10 @@ func _physics_process(delta: float) -> void:
 	var body = collision.get_collider()
 
 	if body is enemy:
-		body.take_damage(1)
-		queue_free()
-		return
+		body.take_damage(dmg)
+	
 
-	if body is CharacterBody2D:
+	if body is player:
 		queue_free()
 		return
 

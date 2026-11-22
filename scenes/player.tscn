@@ -42,4 +42,8 @@ shape = SubResource("CapsuleShape2D_l4ccd")
 [node name="firepos" type="Node2D" parent="." unique_id=2032278414]
 position = Vector2(38, 0)
 
+[node name="fireCooldown" type="Timer" parent="." unique_id=1047788184]
+wait_time = 0.5
+
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="fireCooldown" to="." method="_on_fire_cooldown_timeout"]

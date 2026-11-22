@@ -4,15 +4,19 @@ class_name player
 
 signal died
 
+signal healthChanged
+
 @onready var camera_remote_transform: RemoteTransform2D = $cameraRemoteTransform
 @onready var player_sprite: Sprite2D = $body
 @onready var hitbox: Area2D = $hitbox
 
 var speed: float = 400.0
 
+var isReady: bool = true
+
 var player_health: int = 3
 
-var invulnerability_time: float = 0.0
+var invulnerability_time: float = 0.5
 const INVULNERABILITY_DURATION: float = 1.0
 const KNOCKBACK_STRENGTH: float = 650.0
 const KNOCKBACK_FRICTION: float = 1800.0
@@ -36,7 +40,9 @@ func _process(_delta: float) -> void:
 
 	look_at(get_global_mouse_position())
 
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and isReady:
+		isReady = false
+		$fireCooldown.start()
 		fire()
 
 	if Input.is_action_just_pressed("quit"):
@@ -49,6 +55,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	_update_invulnerability(delta)
+	healthChanged.emit()
 
 	var move_dir = Vector2(
 		Input.get_axis("move_left", "move_right"),
@@ -102,6 +109,7 @@ func _update_invulnerability(delta: float) -> void:
 func take_damage(source: Node2D) -> void:
 	if is_dead or invulnerability_time > 0.0:
 		return
+	healthChanged.emit()
 
 	player_health -= 1
 	print("Player health: ", player_health)
@@ -120,6 +128,7 @@ func take_damage(source: Node2D) -> void:
 		velocity = Vector2.ZERO
 		print("Player died. Respawning...")
 		died.emit()
+		healthChanged.emit()
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
@@ -133,3 +142,8 @@ func fire() -> void:
 	bullet.pos = $firepos.global_position
 	bullet.rota = global_rotation
 	get_parent().add_child(bullet)
+	
+
+
+func _on_fire_cooldown_timeout() -> void:
+	isReady = true # Replace with function body.

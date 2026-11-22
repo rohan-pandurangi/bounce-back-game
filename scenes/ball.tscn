@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d2nwttclscudh" path="res://scripts/ball.gd" id="1_cxlvu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxlvu"]
-radius = 6.0
+radius = 11.045361
 
 [node name="ball" type="CharacterBody2D" unique_id=1881543584]
 collision_layer = 0
@@ -13,7 +13,8 @@ script = ExtResource("1_cxlvu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1306204324]
 texture_filter = 1
-position = Vector2(7, 6)
+position = Vector2(14, 12)
+scale = Vector2(2, 2)
 texture = ExtResource("1_7s4qf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=449864164]
