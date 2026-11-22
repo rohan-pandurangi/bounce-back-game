@@ -7,7 +7,13 @@
 radius = 24.0
 height = 86.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l4ccd"]
+radius = 18.0
+height = 76.0
+
 [node name="player" type="CharacterBody2D" unique_id=1985773387]
+collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_g2els")
 
 [node name="body" type="Sprite2D" parent="." unique_id=2008574325]
@@ -22,3 +28,18 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ol23p")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1243683393]
+
+[node name="hitbox" type="Area2D" parent="." unique_id=919747820]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=808634907]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_l4ccd")
+
+[node name="cameraRemoteTransform" type="RemoteTransform2D" parent="." unique_id=385448781]
+
+[node name="firepos" type="Node2D" parent="." unique_id=2032278414]
+position = Vector2(38, 0)
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

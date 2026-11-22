@@ -1,12 +1,28 @@
 [gd_scene format=3 uid="uid://bnyg8mnxfajv6"]
 
 [ext_resource type="Texture2D" uid="uid://bkvyjjigvdjmx" path="res://assets/textures/background1.png" id="1_4wyf3"]
+[ext_resource type="Script" uid="uid://ceydk6sd8s0p6" path="res://scripts/world.gd" id="1_71j4m"]
 [ext_resource type="PackedScene" uid="uid://dulqh1yimywfm" path="res://scenes/box.tscn" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://08vsefbp3lpi" path="res://scenes/player.tscn" id="2_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://clcgtc0ubfbst" path="res://scenes/enemy.tscn" id="4_k0juu"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_ol23p"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4ccd"]
+size = Vector2(3902, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryi07"]
+size = Vector2(58, 2266)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukkxh"]
+size = Vector2(3898.125, 19.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntl8j"]
+size = Vector2(16, 2244)
+
 [node name="World" type="Node2D" unique_id=2075787131]
+texture_filter = 1
+script = ExtResource("1_71j4m")
 
 [node name="y" type="MeshInstance2D" parent="." unique_id=1063150116]
 modulate = Color(0.4862745, 0.92156863, 0.43529412, 1)
@@ -16,8 +32,30 @@ mesh = SubResource("QuadMesh_ol23p")
 texture = ExtResource("1_4wyf3")
 metadata/_edit_lock_ = true
 
+[node name="player" parent="." unique_id=1985773387 instance=ExtResource("2_rwgxs")]
+position = Vector2(641, 363)
+
 [node name="box" parent="." unique_id=37761909 instance=ExtResource("1_nnsk1")]
 position = Vector2(323, 185)
 
-[node name="player" parent="box" unique_id=1985773387 instance=ExtResource("2_rwgxs")]
-position = Vector2(318, 178)
+[node name="enemy" parent="." unique_id=1130908651 instance=ExtResource("4_k0juu")]
+
+[node name="mainCamera" type="Camera2D" parent="." unique_id=655223851]
+
+[node name="WorldBoundary" type="StaticBody2D" parent="." unique_id=232100166]
+
+[node name="topwall" type="CollisionShape2D" parent="WorldBoundary" unique_id=2124713304]
+position = Vector2(640, -780)
+shape = SubResource("RectangleShape2D_l4ccd")
+
+[node name="leftwall" type="CollisionShape2D" parent="WorldBoundary" unique_id=1967398040]
+position = Vector2(-1319, 370)
+shape = SubResource("RectangleShape2D_ryi07")
+
+[node name="rightwall" type="CollisionShape2D" parent="WorldBoundary" unique_id=1759386051]
+position = Vector2(648.9375, 1488.125)
+shape = SubResource("RectangleShape2D_ukkxh")
+
+[node name="bottomwall" type="CollisionShape2D" parent="WorldBoundary" unique_id=1001985075]
+position = Vector2(2584, 357)
+shape = SubResource("RectangleShape2D_ntl8j")
