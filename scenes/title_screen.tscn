@@ -63,6 +63,23 @@ offset_right = 1076.0
 offset_bottom = 176.0
 text = "EXIT"
 
+[node name="Label" type="Label" parent="." unique_id=972136440]
+modulate = Color(0, 0, 0.101960786, 1)
+offset_left = 78.0
+offset_top = -2.0
+offset_right = 1254.0
+offset_bottom = 203.0
+theme_override_font_sizes/font_size = 150
+text = "BOUNCY WAVE"
+
+[node name="Label" type="Label" parent="Label" unique_id=1540018833]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 185.0
+offset_right = 658.0
+offset_bottom = 208.0
+text = "a game about surviving waves with bouncy ball"
+
 [connection signal="pressed" from="buttonManager/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="buttonManager/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="buttonManager/options/exit" to="." method="_on_exit_pressed"]

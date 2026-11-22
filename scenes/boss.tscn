@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bt41jgf0pixw5"]
+
+[ext_resource type="Texture2D" uid="uid://dvugqjhh13acr" path="res://assets/textures/Boss.png" id="1_boss"]
+[ext_resource type="Script" uid="uid://c41su6v0y3uav" path="res://scripts/enemy.gd" id="2_enemy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_boss"]
+radius = 129.0
+height = 258.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_boss"]
+radius = 700.0
+
+[node name="boss" type="CharacterBody2D" unique_id=1476733795 groups=["enemies"]]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("2_enemy")
+speed = 75.0
+health = 25
+is_boss = true
+knockback_strength = 300.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1647765317]
+texture_filter = 1
+position = Vector2(4, 13)
+scale = Vector2(5, 5)
+texture = ExtResource("1_boss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2039461004]
+shape = SubResource("CapsuleShape2D_boss")
+
+[node name="playerDetector" type="Area2D" parent="." unique_id=1496293444]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerDetector" unique_id=687449476]
+shape = SubResource("CircleShape2D_boss")
+
+[connection signal="body_entered" from="playerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="playerDetector" to="." method="_on_player_detector_body_exited"]

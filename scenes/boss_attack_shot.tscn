@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cdwtwmgkus2oj"]
+
+[ext_resource type="Texture2D" uid="uid://hydac57bq5vi" path="res://assets/textures/boss_attack_shot.png" id="1_texture"]
+[ext_resource type="Script" uid="uid://dvt201mlpqh6o" path="res://scripts/boss_attack_shot.gd" id="2_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_orb"]
+radius = 9.219544
+
+[node name="BossAttackShot" type="CharacterBody2D" unique_id=1736086817 groups=["projectiles"]]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("2_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1869428965]
+texture_filter = 1
+position = Vector2(33, 54)
+scale = Vector2(3, 3)
+texture = ExtResource("1_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=921860808]
+shape = SubResource("CircleShape2D_orb")
