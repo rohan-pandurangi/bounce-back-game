@@ -8,7 +8,7 @@ extends Node2D
 
 var respawn_pending: bool = false
 
-var killCount: int = 29
+var killCount: int = 0
 var bossCount: int = 1
 var boss_triggered: bool = false
 @onready var boss_label: Label = $CanvasLayer/BossCountLabel
